@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="col-sm-12">
+        <h1>Github Profiles Search</h1>
+    </div>
+    <div class="col-sm-12">
+        <form (ngSubmit)="search(searchBox.value)" #searchForm="ngForm">
+            <div class="form-group">
+                <input #searchBox id="search-box" placeholder="Search Text" class="form-control" />
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+    </div>
+</div>
+
+<div class="row" *ngIf="profileSearchResponse">
+    <div class="col-sm-12">
+        Total Matching Users: {{profileSearchResponse.total_count}}
+    </div>
+
+    <div class="col-sm-3" *ngFor="let profile of profileSearchResponse.items | slice:0:10">
+        <div class="card border-primary" style="width: 18rem;">
+            <img class="card-img-top" src="{{profile.avatar_url}}" alt="Github User">
+            <div class="card-body">
+                <h5 class="card-title">{{profile.login}}</h5>
+                <p class="card-text">Type: {{profile.type}}</p>
+                <p class="card-text">Is Site Admin: {{profile.site_admin}}</p>
+                <p class="card-text">Score: {{profile.score}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row" *ngIf="error">
+    <div class="col-sm-12">
+        {{error}}
+    </div>
+</div>
+
