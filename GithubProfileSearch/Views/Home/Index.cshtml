@@ -1,0 +1,9 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Welcome to the Github Profile Search</h1>
+    <p class="lead">This application allows you to search for Github users and view their information. Click the search button below to begin!</p>
+    <p>@Html.ActionLink("Search", "Index", "GithubProfileSearch", new { }, new { @class = "btn btn-primary btn-lg" })</p>
+</div>
